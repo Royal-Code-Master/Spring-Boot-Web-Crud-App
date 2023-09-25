@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<meta charset="ISO-8859-1">
+	<title>Dashboard</title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-success">
+		<div class="container">
+			<a class="navbar-brand text-light" href="#">
+				<strong><i class="fa fa-snowflake-o" aria-hidden="true"></i> &nbsp;Web App</strong>
+			</a>
+
+			<div>
+				<a href="/logout" class="btn btn-light text-dark" style="border-radius: 20px; width: 130px;">
+					<i class="fa fa-sign-out"></i> logout
+				</a>
+			</div>
+
+		</div>
+	</nav>
+
+	<div class=" container mt-5 p-4">
+		<div class="table-responsive">
+			<table class="table table-hover table-bordered">
+				<thead class="bg-success text-white text-center">
+					<th>ID</th>
+					<th>FIRST NAME</th>
+					<th>LAST NAME</th>
+					<th>EMAIL</th>
+					<th>PASSWORD</th>
+					<th>AGE</th>
+					<th colspan="2">ADMIN ACTIONS</th>
+				</thead>
+
+				<tbody class="text-center">
+					<tr th:each="user : ${users}">
+						<td th:text="${user.id}"></td>
+						<td th:text="${user.fname}"></td>
+						<td th:text="${user.lname}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.pwd}"></td>
+						<td th:text="${user.age}"></td>
+						
+						<td>
+							<a th:href="@{/updateuser(userId=${user.id})}"
+								onclick="return confirm('Are you sure you want to update this user?');">
+								<i class="fa fa-pencil text-primary"></i>
+							</a>
+						</td>
+						
+						<td>
+							<a th:href="@{/deleteuser(userId=${user.id})}"
+								onclick="return confirm('Are you sure you want to delete this user?');">
+								<i class="fa fa-trash text-danger"></i>
+							</a>
+						</td>
+
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

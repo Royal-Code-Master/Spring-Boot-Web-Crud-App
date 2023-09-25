@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Web Crud App</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<style>
+		form {
+			max-width: 500px;
+			height: auto;
+			box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+		}
+
+		.col-md-6,
+		label {
+			text-align: left !important;
+			font-weight: 600;
+			margin-bottom: 10px;
+			font-size: medium;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="hero">
+		<div class="container">
+			<center>
+				<br>
+				<form class="form-control p-4 mt-2" th:action="@{/updateuser}" th:object="${user}" method="post">
+					<h4 class="text text-center p-2">
+						Update Account
+						<center>
+							<hr style="width: 25%; height: 3px; color: rgb(255, 128, 0);">
+						</center>
+					</h4>
+
+					<!-- Add the user ID as a hidden input -->
+					<input type="hidden" name="userId" th:value="${user.id}">
+
+					<div class="row p-2 mt-2">
+						<label><i class="fa fa-user-circle-o"></i> &nbsp;First Name</label>
+						<input type="text" name="fname" th:value="${user.fname}" class="form-control"
+							placeholder="First Name" required>
+					</div>
+					<div class="row p-2">
+						<label><i class="fa fa-user-circle-o"></i> &nbsp;Last Name</label>
+						<input type="text" name="lname" th:value="${user.lname}" class="form-control"
+							placeholder="Last Name" required>
+					</div>
+
+					<div class="row p-2">
+						<label><i class="fa fa-envelope"></i> &nbsp;Email</label>
+						<input type="email" name="email" th:value="${user.email}" class="form-control"
+							placeholder="Email" required>
+					</div>
+
+					<div class="row p-2">
+						<label><i class="fa fa-lock"></i> &nbsp;Password</label>
+						<input type="password" name="pwd" th:value="${user.pwd}" class="form-control"
+							placeholder="Password" required>
+					</div>
+					
+					
+					<button type="submit" class="btn btn-warning form-control mb-4 mt-3">Update Account</button>
+					<p style="font-weight: 700;">I already have an account &nbsp;<a href="/signin">login</a> OR <a href="/all">Go Back</a></p>
+				</form>
+
+			</center>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
