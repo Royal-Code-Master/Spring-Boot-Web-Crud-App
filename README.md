@@ -17,6 +17,13 @@ CREATE TABLE user (
 );
 
 
+# Spring Boot Dependencies
+
+1. Spring Web
+2. Spring Data JPA
+3. MYSQL Driver
+4. Thymeleaf
+
 # Author
 
 Royal Code Master
